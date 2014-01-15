@@ -19,6 +19,8 @@
 		939CC1071886076F00F613B0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 939CC0EF1886076E00F613B0 /* UIKit.framework */; };
 		939CC10F1886076F00F613B0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 939CC10D1886076F00F613B0 /* InfoPlist.strings */; };
 		939CC1111886076F00F613B0 /* CP125A_HW2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 939CC1101886076F00F613B0 /* CP125A_HW2Tests.m */; };
+		939CC11C188607AE00F613B0 /* UIColor+UWExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 939CC11B188607AE00F613B0 /* UIColor+UWExtensions.m */; };
+		939CC12018860E9B00F613B0 /* JMSBaseColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 939CC11F18860E9B00F613B0 /* JMSBaseColorViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,10 @@
 		939CC10C1886076F00F613B0 /* CP125A_HW2Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CP125A_HW2Tests-Info.plist"; sourceTree = "<group>"; };
 		939CC10E1886076F00F613B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		939CC1101886076F00F613B0 /* CP125A_HW2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CP125A_HW2Tests.m; sourceTree = "<group>"; };
+		939CC11A188607AE00F613B0 /* UIColor+UWExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+UWExtensions.h"; sourceTree = "<group>"; };
+		939CC11B188607AE00F613B0 /* UIColor+UWExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+UWExtensions.m"; sourceTree = "<group>"; };
+		939CC11E18860E9B00F613B0 /* JMSBaseColorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JMSBaseColorViewController.h; path = "View Controllers/JMSBaseColorViewController.h"; sourceTree = "<group>"; };
+		939CC11F18860E9B00F613B0 /* JMSBaseColorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JMSBaseColorViewController.m; path = "View Controllers/JMSBaseColorViewController.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +116,7 @@
 				939CC0FA1886076F00F613B0 /* JMSAppDelegate.h */,
 				939CC0FB1886076F00F613B0 /* JMSAppDelegate.m */,
 				939CC0FD1886076F00F613B0 /* Images.xcassets */,
+				939CC11D18860E6C00F613B0 /* View Controllers */,
 				939CC0F21886076E00F613B0 /* Supporting Files */,
 			);
 			path = CP125A_HW2;
@@ -118,6 +125,8 @@
 		939CC0F21886076E00F613B0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				939CC11A188607AE00F613B0 /* UIColor+UWExtensions.h */,
+				939CC11B188607AE00F613B0 /* UIColor+UWExtensions.m */,
 				939CC0F31886076E00F613B0 /* CP125A_HW2-Info.plist */,
 				939CC0F41886076E00F613B0 /* InfoPlist.strings */,
 				939CC0F71886076F00F613B0 /* main.m */,
@@ -142,6 +151,15 @@
 				939CC10D1886076F00F613B0 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		939CC11D18860E6C00F613B0 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				939CC11E18860E9B00F613B0 /* JMSBaseColorViewController.h */,
+				939CC11F18860E9B00F613B0 /* JMSBaseColorViewController.m */,
+			);
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,6 +259,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				939CC0F81886076F00F613B0 /* main.m in Sources */,
+				939CC11C188607AE00F613B0 /* UIColor+UWExtensions.m in Sources */,
+				939CC12018860E9B00F613B0 /* JMSBaseColorViewController.m in Sources */,
 				939CC0FC1886076F00F613B0 /* JMSAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -442,6 +462,7 @@
 				939CC1161886076F00F613B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		939CC1171886076F00F613B0 /* Build configuration list for PBXNativeTarget "CP125A_HW2Tests" */ = {
 			isa = XCConfigurationList;
@@ -450,6 +471,7 @@
 				939CC1191886076F00F613B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
