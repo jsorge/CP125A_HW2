@@ -7,16 +7,21 @@
 //
 
 #import "JMSAppDelegate.h"
-#import "JMSRedViewController.h"
+#import "JMSMainViewController.h"
+#import "JMSDataViewController.h"
 
 @implementation JMSAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
     // Override point for customization after application launch.
-    JMSRedViewController *vc = [[JMSRedViewController alloc] init];
-    self.window.rootViewController = vc;
+    UITabBarController *tabBarController = [[UITabBarController alloc] init];
+    JMSMainViewController *tab1VC = [[JMSMainViewController alloc] init];
+    JMSDataViewController *tab2VC = [[JMSDataViewController alloc] init];
+    [tabBarController setViewControllers:@[tab1VC, tab2VC]];
+    self.window.rootViewController = tabBarController;
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

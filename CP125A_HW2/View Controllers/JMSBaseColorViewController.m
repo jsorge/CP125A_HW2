@@ -40,6 +40,11 @@
     return self;
 }
 
+- (void)changeBackgroundColorToColor:(UIColor *)color
+{
+    self.view.backgroundColor = color;
+}
+
 #pragma mark - Loading
 - (void)viewDidLoad
 {    
@@ -87,7 +92,13 @@
 
 - (NSString *)timesPresentedString
 {
-    return [NSString stringWithFormat:@"Presented %lu times", (unsigned long)self.displayCount];
+    NSString *returnString;
+    if (self.displayCount == 1) {
+        returnString = [NSString stringWithFormat:@"Presented %lu time", (unsigned long)self.displayCount];
+    } else {
+        returnString = [NSString stringWithFormat:@"Presented %lu times", (unsigned long)self.displayCount];
+    }
+    return returnString;
 }
                                    
 #pragma mark - View Lifecycle

@@ -14,9 +14,9 @@
 
 @implementation JMSCustomViewController
 
-- (instancetype)initWithColor:(UIColor *)color
+- (instancetype)init
 {
-    return [super initWithColor:color];
+    return [super initWithColor:[UIColor orangeColor]];
 }
 
 @end

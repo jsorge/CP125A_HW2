@@ -10,6 +10,4 @@
 
 @interface JMSCustomViewController : JMSBaseColorViewController
 
-- (instancetype)initWithColor:(UIColor *)color;
-
 @end

@@ -32,4 +32,11 @@
  *  @return An instance of this class
  */
 - (instancetype)initWithColor:(UIColor *)color;
+
+/**
+ *  Changes the background color of the view to the given color.
+ *
+ *  @param color The new background color
+ */
+- (void)changeBackgroundColorToColor:(UIColor *)color;
 @end
