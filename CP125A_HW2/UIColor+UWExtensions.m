@@ -18,4 +18,15 @@
     return [UIColor colorWithRed:red green:green blue:blue alpha:1.0f];
 }
 
++ (UIColor *)uw_invertColor:(UIColor *)color
+{
+    const CGFloat *componentColors = CGColorGetComponents(color.CGColor);
+    
+    UIColor *newColor = [[UIColor alloc] initWithRed:(1.0 - componentColors[0])
+                                               green:(1.0 - componentColors[1])
+                                                blue:(1.0 - componentColors[2])
+                                               alpha:componentColors[3]];
+    return newColor;
+}
+
 @end

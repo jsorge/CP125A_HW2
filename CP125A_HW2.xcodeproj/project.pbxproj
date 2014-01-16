@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9363BA72188631F800AD72BA /* JMSRedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9363BA71188631F800AD72BA /* JMSRedViewController.m */; };
+		9363BA751887A96B00AD72BA /* JMSGreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9363BA741887A96B00AD72BA /* JMSGreenViewController.m */; };
+		9363BA781887A99700AD72BA /* JMSBlueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9363BA771887A99700AD72BA /* JMSBlueViewController.m */; };
+		9363BA7B1887AA0500AD72BA /* JMSRandomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9363BA7A1887AA0500AD72BA /* JMSRandomViewController.m */; };
+		9363BA7E1887AA9000AD72BA /* JMSCustomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9363BA7D1887AA9000AD72BA /* JMSCustomViewController.m */; };
+		9366035F188755AE004EB906 /* UIView+AutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 9366035E188755AE004EB906 /* UIView+AutoLayout.m */; };
 		939CC0EC1886076E00F613B0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 939CC0EB1886076E00F613B0 /* Foundation.framework */; };
 		939CC0EE1886076E00F613B0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 939CC0ED1886076E00F613B0 /* CoreGraphics.framework */; };
 		939CC0F01886076E00F613B0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 939CC0EF1886076E00F613B0 /* UIKit.framework */; };
@@ -34,6 +40,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9363BA70188631F800AD72BA /* JMSRedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JMSRedViewController.h; path = "View Controllers/JMSRedViewController.h"; sourceTree = "<group>"; };
+		9363BA71188631F800AD72BA /* JMSRedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JMSRedViewController.m; path = "View Controllers/JMSRedViewController.m"; sourceTree = "<group>"; };
+		9363BA731887A96B00AD72BA /* JMSGreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JMSGreenViewController.h; path = "View Controllers/JMSGreenViewController.h"; sourceTree = "<group>"; };
+		9363BA741887A96B00AD72BA /* JMSGreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JMSGreenViewController.m; path = "View Controllers/JMSGreenViewController.m"; sourceTree = "<group>"; };
+		9363BA761887A99700AD72BA /* JMSBlueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JMSBlueViewController.h; path = "View Controllers/JMSBlueViewController.h"; sourceTree = "<group>"; };
+		9363BA771887A99700AD72BA /* JMSBlueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JMSBlueViewController.m; path = "View Controllers/JMSBlueViewController.m"; sourceTree = "<group>"; };
+		9363BA791887AA0500AD72BA /* JMSRandomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMSRandomViewController.h; sourceTree = "<group>"; };
+		9363BA7A1887AA0500AD72BA /* JMSRandomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMSRandomViewController.m; sourceTree = "<group>"; };
+		9363BA7C1887AA9000AD72BA /* JMSCustomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JMSCustomViewController.h; path = "View Controllers/JMSCustomViewController.h"; sourceTree = "<group>"; };
+		9363BA7D1887AA9000AD72BA /* JMSCustomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JMSCustomViewController.m; path = "View Controllers/JMSCustomViewController.m"; sourceTree = "<group>"; };
+		9366035D188755AE004EB906 /* UIView+AutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AutoLayout.h"; sourceTree = "<group>"; };
+		9366035E188755AE004EB906 /* UIView+AutoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AutoLayout.m"; sourceTree = "<group>"; };
 		939CC0E81886076E00F613B0 /* CP125A_HW2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CP125A_HW2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		939CC0EB1886076E00F613B0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		939CC0ED1886076E00F613B0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -80,6 +98,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9363BA7F1887AC2700AD72BA /* Color View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				939CC11E18860E9B00F613B0 /* JMSBaseColorViewController.h */,
+				939CC11F18860E9B00F613B0 /* JMSBaseColorViewController.m */,
+				9363BA70188631F800AD72BA /* JMSRedViewController.h */,
+				9363BA71188631F800AD72BA /* JMSRedViewController.m */,
+				9363BA731887A96B00AD72BA /* JMSGreenViewController.h */,
+				9363BA741887A96B00AD72BA /* JMSGreenViewController.m */,
+				9363BA761887A99700AD72BA /* JMSBlueViewController.h */,
+				9363BA771887A99700AD72BA /* JMSBlueViewController.m */,
+				9363BA791887AA0500AD72BA /* JMSRandomViewController.h */,
+				9363BA7A1887AA0500AD72BA /* JMSRandomViewController.m */,
+				9363BA7C1887AA9000AD72BA /* JMSCustomViewController.h */,
+				9363BA7D1887AA9000AD72BA /* JMSCustomViewController.m */,
+			);
+			name = "Color View Controllers";
+			sourceTree = "<group>";
+		};
 		939CC0DF1886076E00F613B0 = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +168,8 @@
 				939CC0F41886076E00F613B0 /* InfoPlist.strings */,
 				939CC0F71886076F00F613B0 /* main.m */,
 				939CC0F91886076F00F613B0 /* CP125A_HW2-Prefix.pch */,
+				9366035D188755AE004EB906 /* UIView+AutoLayout.h */,
+				9366035E188755AE004EB906 /* UIView+AutoLayout.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -156,8 +195,7 @@
 		939CC11D18860E6C00F613B0 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				939CC11E18860E9B00F613B0 /* JMSBaseColorViewController.h */,
-				939CC11F18860E9B00F613B0 /* JMSBaseColorViewController.m */,
+				9363BA7F1887AC2700AD72BA /* Color View Controllers */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -259,9 +297,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				939CC0F81886076F00F613B0 /* main.m in Sources */,
+				9366035F188755AE004EB906 /* UIView+AutoLayout.m in Sources */,
+				9363BA751887A96B00AD72BA /* JMSGreenViewController.m in Sources */,
+				9363BA781887A99700AD72BA /* JMSBlueViewController.m in Sources */,
+				9363BA7E1887AA9000AD72BA /* JMSCustomViewController.m in Sources */,
 				939CC11C188607AE00F613B0 /* UIColor+UWExtensions.m in Sources */,
 				939CC12018860E9B00F613B0 /* JMSBaseColorViewController.m in Sources */,
+				9363BA72188631F800AD72BA /* JMSRedViewController.m in Sources */,
 				939CC0FC1886076F00F613B0 /* JMSAppDelegate.m in Sources */,
+				9363BA7B1887AA0500AD72BA /* JMSRandomViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

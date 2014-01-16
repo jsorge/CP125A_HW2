@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface JMSBaseColorViewController : UIViewController
-
 @property (nonatomic, readonly)NSUInteger displayCount;
+@property (strong, nonatomic)UIButton *dismissButton;
+@property (strong, nonatomic)UIColor *backgroundColor;
 
 #pragma mark - API
 /**
@@ -23,4 +24,12 @@
  */
 - (void)resetDisplayCount;
 
+/**
+ *  Creates the view controller with a given color
+ *
+ *  @param color The color to be used for the background of the view controller
+ *
+ *  @return An instance of this class
+ */
+- (instancetype)initWithColor:(UIColor *)color;
 @end
