@@ -15,9 +15,16 @@
 
 @implementation JMSRandomViewController
 
+#pragma mark - Init
 - (instancetype)init
 {
     return [super initWithColor:[UIColor uw_randomColor]];
 }
 
+#pragma mark - View Lifecycle
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self changeBackgroundColorToRandom];
+}
 @end

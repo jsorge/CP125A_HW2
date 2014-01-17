@@ -43,6 +43,13 @@
 - (void)changeBackgroundColorToColor:(UIColor *)color
 {
     self.view.backgroundColor = color;
+    UIColor *invertedColor = [UIColor uw_invertColor:color];
+    self.dismissButton.tintColor = invertedColor;
+}
+
+- (void)changeBackgroundColorToRandom
+{
+    [self changeBackgroundColorToColor:[UIColor uw_randomColor]];
 }
 
 #pragma mark - Loading

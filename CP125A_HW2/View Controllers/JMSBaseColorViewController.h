@@ -39,4 +39,9 @@
  *  @param color The new background color
  */
 - (void)changeBackgroundColorToColor:(UIColor *)color;
+
+/**
+ *  Changes the background color to a random color and updates the dismiss button tint color
+ */
+- (void)changeBackgroundColorToRandom;
 @end

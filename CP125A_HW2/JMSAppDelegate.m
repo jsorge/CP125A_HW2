@@ -10,6 +10,10 @@
 #import "JMSMainViewController.h"
 #import "JMSDataViewController.h"
 
+@interface JMSAppDelegate () <UITabBarControllerDelegate>
+
+@end
+
 @implementation JMSAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -18,9 +22,18 @@
     
     // Override point for customization after application launch.
     UITabBarController *tabBarController = [[UITabBarController alloc] init];
+    tabBarController.delegate = self;
     JMSMainViewController *tab1VC = [[JMSMainViewController alloc] init];
+    
     JMSDataViewController *tab2VC = [[JMSDataViewController alloc] init];
+    tab2VC.redVC = tab1VC.redVC;
+    tab2VC.greenVC = tab1VC.greenVC;
+    tab2VC.blueVC = tab1VC.blueVC;
+    tab2VC.customVC = tab1VC.customVC;
+    tab2VC.randomVC = tab1VC.randomVC;
+    
     [tabBarController setViewControllers:@[tab1VC, tab2VC]];
+    
     self.window.rootViewController = tabBarController;
     
     self.window.backgroundColor = [UIColor whiteColor];
@@ -53,6 +66,12 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - UITabBarControllerDelegate
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
+{
+    
 }
 
 @end

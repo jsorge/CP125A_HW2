@@ -15,11 +15,6 @@
 #import "UIColor+UWExtensions.h"
 
 @interface JMSMainViewController () <UITextFieldDelegate>
-@property (strong, nonatomic)JMSRedViewController *redVC;
-@property (strong, nonatomic)JMSBlueViewController *blueVC;
-@property (strong, nonatomic)JMSGreenViewController *greenVC;
-@property (strong, nonatomic)JMSCustomViewController *customVC;
-@property (strong, nonatomic)JMSRandomViewController *randomVC;
 @property (weak, nonatomic) IBOutlet UITextField *customRedTextField;
 @property (weak, nonatomic) IBOutlet UITextField *customGreenTextField;
 @property (weak, nonatomic) IBOutlet UITextField *customBlueTextField;
@@ -33,50 +28,56 @@
     if (self) {
         self.tabBarItem.title = @"Colors";
         self.tabBarItem.image = [UIImage imageNamed:@"ColorsTab"];
+        
+        _redVC = [[JMSRedViewController alloc] init];
+        _greenVC = [[JMSGreenViewController alloc] init];
+        _blueVC = [[JMSBlueViewController alloc] init];
+        _customVC = [[JMSCustomViewController alloc] init];
+        _randomVC = [[JMSRandomViewController alloc] init];
     }
     return self;
 }
 
-#pragma mark - Properties
-- (JMSRedViewController *)redVC
-{
-    if (!_redVC) {
-        _redVC = [[JMSRedViewController alloc] init];
-    }
-    return _redVC;
-}
-
-- (JMSBlueViewController *)blueVC
-{
-    if (!_blueVC) {
-        _blueVC = [[JMSBlueViewController alloc] init];
-    }
-    return _blueVC;
-}
-
-- (JMSGreenViewController *)greenVC
-{
-    if (!_greenVC) {
-        _greenVC = [[JMSGreenViewController alloc] init];
-    }
-    return _greenVC;
-}
-
-- (JMSCustomViewController *)customVC
-{
-    if (!_customVC) {
-        _customVC = [[JMSCustomViewController alloc] init];
-    }
-    return _customVC;
-}
-
-- (JMSRandomViewController *)randomVC
-{
-    if (!_randomVC) {
-        _randomVC = [[JMSRandomViewController alloc] init];
-    }
-    return _randomVC;
-}
+//#pragma mark - Properties
+//- (JMSRedViewController *)redVC
+//{
+//    if (!_redVC) {
+//        _redVC = [[JMSRedViewController alloc] init];
+//    }
+//    return _redVC;
+//}
+//
+//- (JMSBlueViewController *)blueVC
+//{
+//    if (!_blueVC) {
+//        _blueVC = [[JMSBlueViewController alloc] init];
+//    }
+//    return _blueVC;
+//}
+//
+//- (JMSGreenViewController *)greenVC
+//{
+//    if (!_greenVC) {
+//        _greenVC = [[JMSGreenViewController alloc] init];
+//    }
+//    return _greenVC;
+//}
+//
+//- (JMSCustomViewController *)customVC
+//{
+//    if (!_customVC) {
+//        _customVC = [[JMSCustomViewController alloc] init];
+//    }
+//    return _customVC;
+//}
+//
+//- (JMSRandomViewController *)randomVC
+//{
+//    if (!_randomVC) {
+//        _randomVC = [[JMSRandomViewController alloc] init];
+//    }
+//    return _randomVC;
+//}
 
 #pragma mark - IBActions
 - (IBAction)redButton:(id)sender
@@ -96,9 +97,20 @@
 
 - (IBAction)customButton:(id)sender
 {
-    CGFloat customRed = (CGFloat)[self.customRedTextField.text floatValue];
-    CGFloat customBlue = (CGFloat)[self.customBlueTextField.text floatValue];
-    CGFloat customGreen = (CGFloat)[self.customGreenTextField.text floatValue];
+    if (self.customRedTextField.text.length == 0 || self.customGreenTextField.text.length == 0 || self.customBlueTextField.text.length == 0) {
+        UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Missing Data"
+                                                             message:@"All 3 custom values must be filled"
+                                                            delegate:nil
+                                                   cancelButtonTitle:nil
+                                                   otherButtonTitles:@"Ok", nil];
+        [errorAlert show];
+        return;
+    }
+    
+    CGFloat customRed = ((CGFloat)[self.customRedTextField.text floatValue] / 100);
+    CGFloat customBlue = ((CGFloat)[self.customBlueTextField.text floatValue] / 100);
+    CGFloat customGreen = ((CGFloat)[self.customGreenTextField.text floatValue] / 100);
+    
     UIColor *customColor = [UIColor colorWithRed:customRed
                                            green:customGreen
                                             blue:customBlue
@@ -117,7 +129,6 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
-    
     return YES;
 }
 

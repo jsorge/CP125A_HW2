@@ -7,13 +7,23 @@
 //
 
 #import "JMSDataViewController.h"
+#import "JMSRedViewController.h"
+#import "JMSBlueViewController.h"
+#import "JMSGreenViewController.h"
+#import "JMSCustomViewController.h"
+#import "JMSRandomViewController.h"
 
-@interface JMSDataViewController ()
-
+@interface JMSDataViewController () <UIActionSheetDelegate>
+@property (weak, nonatomic) IBOutlet UILabel *redLabel;
+@property (weak, nonatomic) IBOutlet UILabel *greenLabel;
+@property (weak, nonatomic) IBOutlet UILabel *blueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *customLabel;
+@property (weak, nonatomic) IBOutlet UILabel *randomLabel;
 @end
 
 @implementation JMSDataViewController
 
+#pragma mark - Init
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -24,16 +34,51 @@
     return self;
 }
 
-- (void)viewDidLoad
+#pragma mark - View Lifecycle
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [super viewWillAppear:animated];
+    [self updateCountLabels];
 }
 
-- (void)didReceiveMemoryWarning
+#pragma mark - IBActions
+- (IBAction)resetCountsButton:(id)sender
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Reset Display Counts?"
+                                                             delegate:self
+                                                    cancelButtonTitle:@"No"
+                                               destructiveButtonTitle:@"Yes"
+                                                    otherButtonTitles:nil];
+    [actionSheet showInView:self.view];
+}
+
+#pragma mark - Private
+- (void)resetAllCountsAndUpdateLabels
+{
+    [self.redVC resetDisplayCount];
+    [self.greenVC resetDisplayCount];
+    [self.blueVC resetDisplayCount];
+    [self.customVC resetDisplayCount];
+    [self.randomVC resetDisplayCount];
+    
+    [self updateCountLabels];
+}
+
+- (void)updateCountLabels
+{
+    self.redLabel.text = [NSString stringWithFormat:@"Red: %lu", (unsigned long)self.redVC.displayCount];
+    self.greenLabel.text = [NSString stringWithFormat:@"Green: %lu", (unsigned long)self.greenVC.displayCount];
+    self.blueLabel.text = [NSString stringWithFormat:@"Blue: %lu", (unsigned long)self.blueVC.displayCount];
+    self.customLabel.text = [NSString stringWithFormat:@"Custom: %lu", (unsigned long)self.customVC.displayCount];
+    self.randomLabel.text = [NSString stringWithFormat:@"Random: %lu", (unsigned long)self.randomVC.displayCount];
+}
+
+#pragma mark - UIActionSheetDelegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        [self resetAllCountsAndUpdateLabels];
+    }
 }
 
 @end
