@@ -20,7 +20,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *customBlueTextField;
 @property (strong, nonatomic)UIToolbar *accessoryView;
 @property (strong, nonatomic)UITextField *activeTextField;
-@property (weak, nonatomic)UIScrollView *scrollview;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollview;
+@property (weak, nonatomic) IBOutlet UIButton *customVCButton;
 @end
 
 @implementation JMSMainViewController
@@ -147,12 +148,35 @@
 #pragma mark - Keyboard Notifications
 - (void)keyboardWasShown:(NSNotification*)aNotification
 {
+    CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
+    if ( screenHeight == 568) { //returns if on a 4" display
+        return;
+    }
     
+    self.scrollview.scrollEnabled = YES;
+    
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    kbSize.height += self.accessoryView.bounds.size.height;
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
+    self.scrollview.contentInset = contentInsets;
+    self.scrollview.scrollIndicatorInsets = contentInsets;
+
+    CGRect aRect = self.view.frame;
+    aRect.size.height -= kbSize.height;
+    if (!CGRectContainsPoint(aRect, self.customVCButton.frame.origin) ) {
+        CGPoint scrollPoint = CGPointMake(0.0, aRect.size.height - 60);
+        [self.scrollview setContentOffset:scrollPoint animated:YES];
+    }
+    
+    self.scrollview.scrollEnabled = NO;
 }
 
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification
 {
-    
+    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
+    self.scrollview.contentInset = contentInsets;
+    self.scrollview.scrollIndicatorInsets = contentInsets;
 }
 
 #pragma mark - Private
