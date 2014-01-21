@@ -14,12 +14,13 @@
 #import "JMSRandomViewController.h"
 #import "UIColor+UWExtensions.h"
 
-@interface JMSMainViewController () <UITextFieldDelegate>
+@interface JMSMainViewController () <UITextFieldDelegate, UITextInputTraits>
 @property (weak, nonatomic) IBOutlet UITextField *customRedTextField;
 @property (weak, nonatomic) IBOutlet UITextField *customGreenTextField;
 @property (weak, nonatomic) IBOutlet UITextField *customBlueTextField;
 @property (strong, nonatomic)UIToolbar *accessoryView;
 @property (strong, nonatomic)UITextField *activeTextField;
+@property (weak, nonatomic)UIScrollView *scrollview;
 @end
 
 @implementation JMSMainViewController
@@ -48,6 +49,9 @@
     self.customRedTextField.inputAccessoryView = self.accessoryView;
     self.customGreenTextField.inputAccessoryView = self.accessoryView;
     self.customBlueTextField.inputAccessoryView = self.accessoryView;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillBeHidden:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 #pragma mark - Properties
@@ -75,7 +79,7 @@
                                                                                     target:nil
                                                                                     action:nil];
         fixedSpace.width = 10;
-        _accessoryView.items = @[fixedSpace, previousButton, nextButton, flexiSpace, doneButton];
+        _accessoryView.items = @[fixedSpace, previousButton, fixedSpace, nextButton, flexiSpace, doneButton];
     }
     return _accessoryView;
 }
@@ -140,6 +144,17 @@
     return YES;
 }
 
+#pragma mark - Keyboard Notifications
+- (void)keyboardWasShown:(NSNotification*)aNotification
+{
+    
+}
+
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
+    
+}
+
 #pragma mark - Private
 - (void)keyboardDoneButton
 {
@@ -166,6 +181,11 @@
     } else if (self.activeTextField == self.customBlueTextField) {
         [self.customRedTextField becomeFirstResponder];
     }
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end
