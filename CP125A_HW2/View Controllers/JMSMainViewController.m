@@ -18,6 +18,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *customRedTextField;
 @property (weak, nonatomic) IBOutlet UITextField *customGreenTextField;
 @property (weak, nonatomic) IBOutlet UITextField *customBlueTextField;
+@property (strong, nonatomic)UIToolbar *accessoryView;
+@property (strong, nonatomic)UITextField *activeTextField;
 @end
 
 @implementation JMSMainViewController
@@ -38,46 +40,45 @@
     return self;
 }
 
-//#pragma mark - Properties
-//- (JMSRedViewController *)redVC
-//{
-//    if (!_redVC) {
-//        _redVC = [[JMSRedViewController alloc] init];
-//    }
-//    return _redVC;
-//}
-//
-//- (JMSBlueViewController *)blueVC
-//{
-//    if (!_blueVC) {
-//        _blueVC = [[JMSBlueViewController alloc] init];
-//    }
-//    return _blueVC;
-//}
-//
-//- (JMSGreenViewController *)greenVC
-//{
-//    if (!_greenVC) {
-//        _greenVC = [[JMSGreenViewController alloc] init];
-//    }
-//    return _greenVC;
-//}
-//
-//- (JMSCustomViewController *)customVC
-//{
-//    if (!_customVC) {
-//        _customVC = [[JMSCustomViewController alloc] init];
-//    }
-//    return _customVC;
-//}
-//
-//- (JMSRandomViewController *)randomVC
-//{
-//    if (!_randomVC) {
-//        _randomVC = [[JMSRandomViewController alloc] init];
-//    }
-//    return _randomVC;
-//}
+#pragma mark - View Lifecycle
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.customRedTextField.inputAccessoryView = self.accessoryView;
+    self.customGreenTextField.inputAccessoryView = self.accessoryView;
+    self.customBlueTextField.inputAccessoryView = self.accessoryView;
+}
+
+#pragma mark - Properties
+- (UIToolbar *)accessoryView
+{
+    if (!_accessoryView) {
+        _accessoryView = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
+        _accessoryView.translucent = NO;
+        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done"
+                                                                       style:UIBarButtonItemStylePlain
+                                                                      target:self
+                                                                      action:@selector(keyboardDoneButton)];
+        UIBarButtonItem *previousButton = [[UIBarButtonItem alloc] initWithTitle:@"<"
+                                                                           style:UIBarButtonItemStylePlain
+                                                                          target:self
+                                                                          action:@selector(selectPreviousTextField)];
+        UIBarButtonItem *nextButton = [[UIBarButtonItem alloc] initWithTitle:@">"
+                                                                       style:UIBarButtonItemStylePlain
+                                                                      target:self
+                                                                      action:@selector(selectNextTextField)];
+        UIBarButtonItem *flexiSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                                target:nil
+                                                                                action:nil];
+        UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+                                                                                    target:nil
+                                                                                    action:nil];
+        fixedSpace.width = 10;
+        _accessoryView.items = @[fixedSpace, previousButton, nextButton, flexiSpace, doneButton];
+    }
+    return _accessoryView;
+}
 
 #pragma mark - IBActions
 - (IBAction)redButton:(id)sender
@@ -130,6 +131,41 @@
 {
     [textField resignFirstResponder];
     return YES;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    self.activeTextField = textField;
+    
+    return YES;
+}
+
+#pragma mark - Private
+- (void)keyboardDoneButton
+{
+    [self.activeTextField resignFirstResponder];
+}
+
+- (void)selectPreviousTextField
+{
+    if (self.activeTextField == self.customRedTextField) {
+        [self.customBlueTextField becomeFirstResponder];
+    } else if (self.activeTextField == self.customGreenTextField) {
+        [self.customRedTextField becomeFirstResponder];
+    } else if (self.activeTextField == self.customBlueTextField) {
+        [self.customGreenTextField becomeFirstResponder];
+    }
+}
+
+- (void)selectNextTextField
+{
+    if (self.activeTextField == self.customRedTextField) {
+        [self.customGreenTextField becomeFirstResponder];
+    } else if (self.activeTextField == self.customGreenTextField) {
+        [self.customBlueTextField becomeFirstResponder];
+    } else if (self.activeTextField == self.customBlueTextField) {
+        [self.customRedTextField becomeFirstResponder];
+    }
 }
 
 @end

@@ -10,7 +10,7 @@
 #import "JMSMainViewController.h"
 #import "JMSDataViewController.h"
 
-@interface JMSAppDelegate () <UITabBarControllerDelegate>
+@interface JMSAppDelegate ()
 
 @end
 
@@ -22,7 +22,7 @@
     
     // Override point for customization after application launch.
     UITabBarController *tabBarController = [[UITabBarController alloc] init];
-    tabBarController.delegate = self;
+    
     JMSMainViewController *tab1VC = [[JMSMainViewController alloc] init];
     
     JMSDataViewController *tab2VC = [[JMSDataViewController alloc] init];
@@ -66,12 +66,6 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-}
-
-#pragma mark - UITabBarControllerDelegate
-- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
-{
-    
 }
 
 @end
