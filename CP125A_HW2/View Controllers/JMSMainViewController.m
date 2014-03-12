@@ -8,20 +8,19 @@
 
 #import "JMSMainViewController.h"
 #import "JMSRedViewController.h"
-#import "JMSBlueViewController.h"
 #import "JMSGreenViewController.h"
+#import "JMSBlueViewController.h"
 #import "JMSCustomViewController.h"
 #import "JMSRandomViewController.h"
-#import "UIColor+UWExtensions.h"
 
-@interface JMSMainViewController () <UITextFieldDelegate, UITextInputTraits>
+@interface JMSMainViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *customRedTextField;
 @property (weak, nonatomic) IBOutlet UITextField *customGreenTextField;
 @property (weak, nonatomic) IBOutlet UITextField *customBlueTextField;
-@property (strong, nonatomic)UIToolbar *accessoryView;
-@property (strong, nonatomic)UITextField *activeTextField;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollview;
 @property (weak, nonatomic) IBOutlet UIButton *customVCButton;
+@property (strong, nonatomic)UIToolbar *accessoryView;
+@property (strong, nonatomic)UITextField *activeTextField;
 @end
 
 @implementation JMSMainViewController
@@ -50,9 +49,20 @@
     self.customRedTextField.inputAccessoryView = self.accessoryView;
     self.customGreenTextField.inputAccessoryView = self.accessoryView;
     self.customBlueTextField.inputAccessoryView = self.accessoryView;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillBeHidden:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Properties
@@ -61,21 +71,18 @@
     if (!_accessoryView) {
         _accessoryView = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
         _accessoryView.translucent = NO;
-        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done"
-                                                                       style:UIBarButtonItemStylePlain
-                                                                      target:self
-                                                                      action:@selector(keyboardDoneButton)];
-        UIBarButtonItem *previousButton = [[UIBarButtonItem alloc] initWithTitle:@"<"
-                                                                           style:UIBarButtonItemStylePlain
-                                                                          target:self
-                                                                          action:@selector(selectPreviousTextField)];
-        UIBarButtonItem *nextButton = [[UIBarButtonItem alloc] initWithTitle:@">"
-                                                                       style:UIBarButtonItemStylePlain
-                                                                      target:self
-                                                                      action:@selector(selectNextTextField)];
+        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                                    target:self
+                                                                                    action:@selector(keyboardDoneButton)];
+        UIBarButtonItem *previousButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:105
+                                                                                        target:self
+                                                                                        action:@selector(selectPreviousTextField)];
+        UIBarButtonItem *nextButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:106
+                                                                                    target:self
+                                                                                    action:@selector(selectNextTextField)];
         UIBarButtonItem *flexiSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
-                                                                                target:nil
-                                                                                action:nil];
+                                                                                    target:nil
+                                                                                    action:nil];
         UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
                                                                                     target:nil
                                                                                     action:nil];
@@ -113,9 +120,9 @@
         return;
     }
     
-    CGFloat customRed = ((CGFloat)[self.customRedTextField.text floatValue] / 100);
-    CGFloat customBlue = ((CGFloat)[self.customBlueTextField.text floatValue] / 100);
-    CGFloat customGreen = ((CGFloat)[self.customGreenTextField.text floatValue] / 100);
+    CGFloat customRed = (CGFloat)([self.customRedTextField.text floatValue] / 100.0f);
+    CGFloat customBlue = (CGFloat)([self.customBlueTextField.text floatValue] / 100.0f);
+    CGFloat customGreen = (CGFloat)([self.customGreenTextField.text floatValue] / 100.0f);
     
     UIColor *customColor = [UIColor colorWithRed:customRed
                                            green:customGreen
@@ -127,7 +134,6 @@
 
 - (IBAction)randomButton:(id)sender
 {
-    [self.randomVC changeBackgroundColorToColor:[UIColor uw_randomColor]];
     [self presentViewController:self.randomVC animated:YES completion:nil];
 }
 
@@ -174,9 +180,7 @@
 
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification
 {
-    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
-    self.scrollview.contentInset = contentInsets;
-    self.scrollview.scrollIndicatorInsets = contentInsets;
+    [self.scrollview setContentOffset:CGPointMake(0, 0) animated:YES];
 }
 
 #pragma mark - Private
@@ -205,11 +209,6 @@
     } else if (self.activeTextField == self.customBlueTextField) {
         [self.customRedTextField becomeFirstResponder];
     }
-}
-
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

@@ -7,23 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIColor+UWExtensions.h"
 
 @interface JMSBaseColorViewController : UIViewController
 @property (nonatomic, readonly)NSUInteger displayCount;
-@property (strong, nonatomic)UIButton *dismissButton;
 @property (strong, nonatomic)UIColor *backgroundColor;
 
 #pragma mark - API
-/**
- *  Increments the displayCount property by 1
- */
-- (void)incrementDisplayCount;
-
-/**
- *  Resets the displayCount property to 0
- */
-- (void)resetDisplayCount;
-
 /**
  *  Creates the view controller with a given color
  *
@@ -34,14 +24,15 @@
 - (instancetype)initWithColor:(UIColor *)color;
 
 /**
+ *  Resets the displayCount property to 0
+ */
+- (void)resetDisplayCount;
+
+/**
  *  Changes the background color of the view to the given color.
  *
  *  @param color The new background color
  */
 - (void)changeBackgroundColorToColor:(UIColor *)color;
 
-/**
- *  Changes the background color to a random color and updates the dismiss button tint color
- */
-- (void)changeBackgroundColorToRandom;
 @end

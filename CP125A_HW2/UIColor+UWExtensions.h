@@ -12,5 +12,7 @@
 
 + (UIColor *)uw_randomColor;
 
+//Added by Jared
 + (UIColor *)uw_invertColor:(UIColor *)color;
+
 @end

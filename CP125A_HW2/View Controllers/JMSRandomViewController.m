@@ -7,7 +7,6 @@
 //
 
 #import "JMSRandomViewController.h"
-#import "UIColor+UWExtensions.h"
 
 @interface JMSRandomViewController ()
 
@@ -25,6 +24,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self changeBackgroundColorToRandom];
+    [self changeBackgroundColorToColor:[UIColor uw_randomColor]];
 }
+
 @end

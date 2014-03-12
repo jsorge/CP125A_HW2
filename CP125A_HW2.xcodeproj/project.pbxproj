@@ -51,8 +51,8 @@
 		9363BA741887A96B00AD72BA /* JMSGreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JMSGreenViewController.m; path = "View Controllers/JMSGreenViewController.m"; sourceTree = "<group>"; };
 		9363BA761887A99700AD72BA /* JMSBlueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JMSBlueViewController.h; path = "View Controllers/JMSBlueViewController.h"; sourceTree = "<group>"; };
 		9363BA771887A99700AD72BA /* JMSBlueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JMSBlueViewController.m; path = "View Controllers/JMSBlueViewController.m"; sourceTree = "<group>"; };
-		9363BA791887AA0500AD72BA /* JMSRandomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMSRandomViewController.h; sourceTree = "<group>"; };
-		9363BA7A1887AA0500AD72BA /* JMSRandomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMSRandomViewController.m; sourceTree = "<group>"; };
+		9363BA791887AA0500AD72BA /* JMSRandomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JMSRandomViewController.h; path = "View Controllers/JMSRandomViewController.h"; sourceTree = "<group>"; };
+		9363BA7A1887AA0500AD72BA /* JMSRandomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JMSRandomViewController.m; path = "View Controllers/JMSRandomViewController.m"; sourceTree = "<group>"; };
 		9363BA7C1887AA9000AD72BA /* JMSCustomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JMSCustomViewController.h; path = "View Controllers/JMSCustomViewController.h"; sourceTree = "<group>"; };
 		9363BA7D1887AA9000AD72BA /* JMSCustomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JMSCustomViewController.m; path = "View Controllers/JMSCustomViewController.m"; sourceTree = "<group>"; };
 		9363BA801887B17D00AD72BA /* JMSMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JMSMainViewController.h; path = "View Controllers/JMSMainViewController.h"; sourceTree = "<group>"; };
@@ -167,8 +167,6 @@
 				939CC0FB1886076F00F613B0 /* JMSAppDelegate.m */,
 				939CC0FD1886076F00F613B0 /* Images.xcassets */,
 				939CC11D18860E6C00F613B0 /* View Controllers */,
-				9363BA8A1889061E00AD72BA /* JMSLine.h */,
-				9363BA8B1889061E00AD72BA /* JMSLine.m */,
 				939CC0F21886076E00F613B0 /* Supporting Files */,
 			);
 			path = CP125A_HW2;
@@ -177,14 +175,16 @@
 		939CC0F21886076E00F613B0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9363BA8A1889061E00AD72BA /* JMSLine.h */,
+				9363BA8B1889061E00AD72BA /* JMSLine.m */,
 				939CC11A188607AE00F613B0 /* UIColor+UWExtensions.h */,
 				939CC11B188607AE00F613B0 /* UIColor+UWExtensions.m */,
+				9366035D188755AE004EB906 /* UIView+AutoLayout.h */,
+				9366035E188755AE004EB906 /* UIView+AutoLayout.m */,
 				939CC0F31886076E00F613B0 /* CP125A_HW2-Info.plist */,
 				939CC0F41886076E00F613B0 /* InfoPlist.strings */,
 				939CC0F71886076F00F613B0 /* main.m */,
 				939CC0F91886076F00F613B0 /* CP125A_HW2-Prefix.pch */,
-				9366035D188755AE004EB906 /* UIView+AutoLayout.h */,
-				9366035E188755AE004EB906 /* UIView+AutoLayout.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";

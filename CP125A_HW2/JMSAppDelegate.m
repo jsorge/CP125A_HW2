@@ -20,11 +20,9 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    // Override point for customization after application launch.
     UITabBarController *tabBarController = [[UITabBarController alloc] init];
     
     JMSMainViewController *tab1VC = [[JMSMainViewController alloc] init];
-    
     JMSDataViewController *tab2VC = [[JMSDataViewController alloc] init];
     tab2VC.redVC = tab1VC.redVC;
     tab2VC.greenVC = tab1VC.greenVC;

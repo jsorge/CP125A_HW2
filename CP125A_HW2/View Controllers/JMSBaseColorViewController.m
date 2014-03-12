@@ -8,11 +8,11 @@
 
 #import "JMSBaseColorViewController.h"
 #import "UIView+AutoLayout.h"
-#import "UIColor+UWExtensions.h"
 
 @interface JMSBaseColorViewController ()
 @property (nonatomic, readwrite)NSUInteger displayCount;
 @property (strong, nonatomic, readwrite)UILabel *displayCountLabel;
+@property (strong, nonatomic)UIButton *dismissButton;
 
 - (void)tapDismissButton;
 @end
@@ -20,10 +20,13 @@
 @implementation JMSBaseColorViewController
 
 #pragma mark - API
-- (void)incrementDisplayCount;
+- (instancetype)initWithColor:(UIColor *)color
 {
-    self.displayCount += 1;
-    self.displayCountLabel.text = [self timesPresentedString];
+    self = [super init];
+    if (self) {
+        _backgroundColor = color;
+    }
+    return self;
 }
 
 - (void)resetDisplayCount;
@@ -31,25 +34,12 @@
     self.displayCount = 0;
 }
 
-- (instancetype)initWithColor:(UIColor *)color
-{
-    self = [super init];
-    if (self) {
-        self.backgroundColor = color;
-    }
-    return self;
-}
-
 - (void)changeBackgroundColorToColor:(UIColor *)color
 {
     self.view.backgroundColor = color;
+    
     UIColor *invertedColor = [UIColor uw_invertColor:color];
     self.dismissButton.tintColor = invertedColor;
-}
-
-- (void)changeBackgroundColorToRandom
-{
-    [self changeBackgroundColorToColor:[UIColor uw_randomColor]];
 }
 
 #pragma mark - Loading
@@ -61,6 +51,7 @@
     UILabel *countLabel = [UILabel autoLayoutView];
     countLabel.text = [self timesPresentedString];
     countLabel.textAlignment = NSTextAlignmentCenter;
+    countLabel.font = [UIFont boldSystemFontOfSize:25.0];
     [self.view addSubview:countLabel];
     self.displayCountLabel = countLabel;
     
@@ -68,6 +59,7 @@
     UIButton *dismissButton = [UIButton buttonWithType:UIButtonTypeSystem];
     dismissButton.translatesAutoresizingMaskIntoConstraints = NO;
     dismissButton.tintColor = [UIColor uw_invertColor:self.backgroundColor];
+    dismissButton.titleLabel.font = [UIFont boldSystemFontOfSize:15.0];
     [dismissButton setTitle:@"Dismiss" forState:UIControlStateNormal];
     [dismissButton addTarget:self action:@selector(tapDismissButton) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:dismissButton];
@@ -97,6 +89,12 @@
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void)incrementDisplayCount;
+{
+    self.displayCount += 1;
+    self.displayCountLabel.text = [self timesPresentedString];
+}
+
 - (NSString *)timesPresentedString
 {
     NSString *returnString;
@@ -113,5 +111,18 @@
 {
     [super viewWillAppear:animated];
     [self incrementDisplayCount];
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    UIStatusBarStyle barStyle;
+    CGFloat brightness;
+    [self.backgroundColor getHue:nil saturation:nil brightness:&brightness alpha:nil];
+    if (brightness > 0.5) { //light background color
+        barStyle = UIStatusBarStyleDefault;
+    } else { //dark background color
+        barStyle = UIStatusBarStyleLightContent;
+    }
+    return barStyle;
 }
 @end

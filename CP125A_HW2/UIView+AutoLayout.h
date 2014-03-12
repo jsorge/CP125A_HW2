@@ -9,5 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface UIView (AutoLayout)
+
+/**
+ *  Create a new view that is Auto Layout friendly (Autoresizing Masks is set to NO)
+ *
+ *  @return The instance of view that was created
+ */
 +(instancetype)autoLayoutView;
+
 @end

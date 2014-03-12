@@ -9,10 +9,12 @@
 #import "UIView+AutoLayout.h"
 
 @implementation UIView (AutoLayout)
-+(instancetype)autoLayoutView;
+
++ (instancetype)autoLayoutView
 {
     UIView *view = [self new];
     view.translatesAutoresizingMaskIntoConstraints = NO;
     return view;
 }
+
 @end

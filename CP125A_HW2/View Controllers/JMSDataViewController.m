@@ -46,38 +46,33 @@
 {
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Reset Display Counts?"
                                                              delegate:self
-                                                    cancelButtonTitle:@"No"
-                                               destructiveButtonTitle:@"Yes"
+                                                    cancelButtonTitle:@"Cancel"
+                                               destructiveButtonTitle:@"Reset"
                                                     otherButtonTitles:nil];
     [actionSheet showInView:self.view];
 }
 
 #pragma mark - Private
-- (void)resetAllCountsAndUpdateLabels
-{
-    [self.redVC resetDisplayCount];
-    [self.greenVC resetDisplayCount];
-    [self.blueVC resetDisplayCount];
-    [self.customVC resetDisplayCount];
-    [self.randomVC resetDisplayCount];
-    
-    [self updateCountLabels];
-}
-
 - (void)updateCountLabels
 {
-    self.redLabel.text = [NSString stringWithFormat:@"Red: %lu", (unsigned long)self.redVC.displayCount];
-    self.greenLabel.text = [NSString stringWithFormat:@"Green: %lu", (unsigned long)self.greenVC.displayCount];
-    self.blueLabel.text = [NSString stringWithFormat:@"Blue: %lu", (unsigned long)self.blueVC.displayCount];
-    self.customLabel.text = [NSString stringWithFormat:@"Custom: %lu", (unsigned long)self.customVC.displayCount];
-    self.randomLabel.text = [NSString stringWithFormat:@"Random: %lu", (unsigned long)self.randomVC.displayCount];
+    self.redLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.redVC.displayCount];
+    self.greenLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.greenVC.displayCount];
+    self.blueLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.blueVC.displayCount];
+    self.customLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.customVC.displayCount];
+    self.randomLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.randomVC.displayCount];
 }
 
 #pragma mark - UIActionSheetDelegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (buttonIndex == 0) {
-        [self resetAllCountsAndUpdateLabels];
+    if (buttonIndex == actionSheet.destructiveButtonIndex) {
+        [self.redVC resetDisplayCount];
+        [self.greenVC resetDisplayCount];
+        [self.blueVC resetDisplayCount];
+        [self.customVC resetDisplayCount];
+        [self.randomVC resetDisplayCount];
+        
+        [self updateCountLabels];
     }
 }
 

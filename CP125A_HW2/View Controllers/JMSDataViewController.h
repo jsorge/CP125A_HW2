@@ -15,8 +15,8 @@
 
 @interface JMSDataViewController : UIViewController
 @property (strong, nonatomic)JMSRedViewController *redVC;
-@property (strong, nonatomic)JMSBlueViewController *blueVC;
 @property (strong, nonatomic)JMSGreenViewController *greenVC;
+@property (strong, nonatomic)JMSBlueViewController *blueVC;
 @property (strong, nonatomic)JMSCustomViewController *customVC;
 @property (strong, nonatomic)JMSRandomViewController *randomVC;
 @end
